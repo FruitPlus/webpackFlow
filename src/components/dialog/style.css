@@ -1,0 +1,21 @@
+.dialog{
+	width: 400px;
+	height: 200px;
+	border:1px solid #ddd;
+}
+
+.dialog h4{
+	height: 20px;
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	margin: 0px;
+	padding: 0px;
+}
+.dialog h4 .close{
+	position: absolute;
+	right: 0px;
+	top:0px;
+	height: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}
