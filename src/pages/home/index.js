@@ -2,16 +2,20 @@ console.log('我是ｈｏｍｅ')
 
 
 
+
+import 'components/slider/style.less';
 import easyTab from 'components/easyTab';
 import UI from 'components/slider/slider.js'
-import 'components/slider/style.less'
+
 
 
 var oTestTab = new easyTab('easyTab');
 oTestTab.init();
 
-$(function($){
 
+
+$(function($){
+	console.log('ready')
 	$('#demo1').slideBox();
 
 });
