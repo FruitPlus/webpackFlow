@@ -1,1 +1,0 @@
-webpackJsonp([5],{11:function(o,n,s){var c=s(17);"string"==typeof c&&(c=[[o.i,c,""]]);s(1)(c,{});c.locals&&(o.exports=c.locals)},17:function(o,n,s){n=o.exports=s(2)(void 0),n.push([o.i,".bar{color:green}",""])},27:function(o,n,s){"use strict";s(11),console.log("bar")}},[27]);

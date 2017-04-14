@@ -2,7 +2,7 @@
 
 // import $ from 'jquery'
 import './style.css'
-import Dialog from '../dialog'
+// import Dialog from '../dialog'
 
 
 

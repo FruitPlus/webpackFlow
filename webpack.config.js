@@ -4,6 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pkgInfo = require('./package.json')
 const glob = require('glob')
 
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+ 
+// Create multiple instances 
+const extractLESS = new ExtractTextPlugin('style/[name]-two.css?[hash]');
+
+
 module.exports = (options = {}) => {
   const config = require('./config/' + (process.env.npm_config_config || options.config || 'default'))
 
@@ -12,10 +19,10 @@ module.exports = (options = {}) => {
   const entryJsList = {}
   const entryHtmlList = []
   for (const path of entries) {
-    const chunkName = path.slice('./src/pages/'.length, -'/index.js'.length)
+    const chunkName = path.slice('./src/pages/'.length, -'/index.js'.length);
     entryJsList[chunkName] = path
     entryHtmlList.push(new HtmlWebpackPlugin({
-      template: path.replace('index.js', 'index.html'),
+      template: path.replace('index.js', 'index.ejs'),
       filename: chunkName + '.html',
       chunks: ['manifest', 'vendor', chunkName]
     }))
@@ -28,8 +35,8 @@ module.exports = (options = {}) => {
 
     output: {
       path: resolve(__dirname, 'dist'),
-      filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
-      chunkFilename: '[id].js?[chunkhash]'
+      filename: options.dev ? 'js/[name].js' : 'js/[name].js?[chunkhash]',
+      chunkFilename: 'js/[id].js?[chunkhash]'
     },
 
     module: {
@@ -41,7 +48,7 @@ module.exports = (options = {}) => {
           exclude: /node_modules/,
           use: ['babel-loader']
         },
-
+        { test: /\.ejs$/, use: 'ejs-loader?variable=data' },
         {
           test: /\.html$/,
           use: [
@@ -56,8 +63,12 @@ module.exports = (options = {}) => {
         },
 
         {
+          test: /\.less$/,
+          use: extractLESS.extract([ 'css-loader', 'less-loader' ])
+        },
+        {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader']
+          use: extractLESS.extract([ 'css-loader', 'less-loader' ])
         },
 
         {
@@ -90,6 +101,7 @@ module.exports = (options = {}) => {
 
     plugins: [
       ...entryHtmlList,
+      extractLESS,
       new webpack.ProvidePlugin({
            $: "jquery",
            jQuery: "jquery",
@@ -109,7 +121,9 @@ module.exports = (options = {}) => {
 
     resolve: {
       alias: {
-        '~': resolve(__dirname, 'src')
+        '~': resolve(__dirname, 'src'),
+        'components': resolve(__dirname, './src/components'),
+        'pages': resolve(__dirname, './src/pages')
       }
     },
 

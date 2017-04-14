@@ -1,23 +1,17 @@
-/* eslint no-console: "off" */
-
-// import $ from 'jquery'
-// import jQuery from 'jquery'
-import './style.css'
-import UI from '~/components/slider/slider.js'
-import '~/components/slider/style.css'
+console.log('我是ｈｏｍｅ')
 
 
 
-import easyTab from '~/components/easyTab';
+import easyTab from 'components/easyTab';
+import UI from 'components/slider/slider.js'
+import 'components/slider/style.less'
 
 
-	var oTestTab = new easyTab('easyTab');
-	oTestTab.init();
+var oTestTab = new easyTab('easyTab');
+oTestTab.init();
 
 $(function($){
-	console.log($.fn)
-	// console.log(UI)
+
 	$('#demo1').slideBox();
 
 });
-

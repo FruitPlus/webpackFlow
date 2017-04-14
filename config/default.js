@@ -11,8 +11,8 @@ module.exports = {
   devServer: {
     port: 8100,
     proxy: {
-      '/api/auth/': {
-        target: 'http://api.example.dev',
+      '/api/collectJob/': {
+        target: 'http://localhost:3000',
         changeOrigin: true,
         pathRewrite: { '^/api': '' }
       },

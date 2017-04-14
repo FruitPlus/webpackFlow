@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <div class=header> <p>我是头部</p> </div>
+    ${require('../../components/header/header.html')}
     <div class = "collectJob">
       <h3 class = "title">
         我收藏的职位
@@ -56,6 +56,6 @@
         </li>
       </ul>
     </div>
-    <div class=footer> <p>我是尾部</p> </div>
-  <script type="text/javascript" src="js/manifest.js?cfa5aef618b39578644f"></script><script type="text/javascript" src="js/vendor.js?9265b2af01fed59d81d6"></script><script type="text/javascript" src="js/home.js?8104a3c4e5164e814f80"></script></body>
+    ${require('../../components/footer/footer.html')}
+  </body>
 </html>
