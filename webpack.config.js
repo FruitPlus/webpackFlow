@@ -50,6 +50,7 @@ module.exports = (options = {}) => {
           use: ['babel-loader']
         },
         { test: /\.ejs$/, use: 'ejs-loader?variable=data' },
+        { test: /\.hbs/, use: 'handlebars-loader' },
         {
                 test: /\.(htm|html)$/i,
                 loader: 'html-withimg-loader'

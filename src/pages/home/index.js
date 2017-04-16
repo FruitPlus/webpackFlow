@@ -6,6 +6,21 @@ console.log('我是ｈｏｍｅ')
 import 'components/slider/style.less';
 import easyTab from 'components/easyTab';
 import UI from 'components/slider/slider.js'
+import dialog from 'components/Dialog/dialog.js';
+
+
+
+
+var user = $('#users')
+var names = ['mike','amy','candy']
+var homeTpl = require("../test.hbs");
+var homeHtml = homeTpl({'name':'mike'});
+
+console.log(homeHtml)
+// console.log(homeTpl)
+// var html= ejs.render(user,{names:names});
+
+$('body').append(dialog)
 
 
 
