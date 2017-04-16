@@ -6,6 +6,7 @@ const glob = require('glob')
 
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
  
 // Create multiple instances 
 const extractLESS = new ExtractTextPlugin('style/[name]-two.css?[hash]');
@@ -101,6 +102,13 @@ module.exports = (options = {}) => {
     },
 
     plugins: [
+      new BrowserSyncPlugin({
+            // browse to http://localhost:3000/ during development,
+            // ./public directory is being served
+            host: 'localhost',
+            port: 3000,
+            proxy: 'http://localhost:8100/'
+          }),
       ...entryHtmlList,
       extractLESS,
       new webpack.ProvidePlugin({
@@ -118,6 +126,7 @@ module.exports = (options = {}) => {
         VERSION: JSON.stringify(pkgInfo.version),
         CONFIG: JSON.stringify(config.runtimeConfig)
       })
+
     ],
 
     resolve: {

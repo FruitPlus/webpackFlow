@@ -10,6 +10,8 @@ module.exports = {
 
   devServer: {
     port: 8100,
+    hot: true,
+    inline: true,
     proxy: {
       '/api/collectJob/': {
         target: 'http://localhost:3000',
