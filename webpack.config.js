@@ -23,7 +23,7 @@ module.exports = (options = {}) => {
     const chunkName = path.slice('./src/pages/'.length, -'/index.js'.length);
     entryJsList[chunkName] = path
     entryHtmlList.push(new HtmlWebpackPlugin({
-      template: path.replace('index.js', 'index.ejs'),
+      template: path.replace('index.js', 'index.html'),
       filename: chunkName + '.html',
       chunks: ['manifest', 'vendor', chunkName]
     }))
@@ -50,6 +50,10 @@ module.exports = (options = {}) => {
           use: ['babel-loader']
         },
         { test: /\.ejs$/, use: 'ejs-loader?variable=data' },
+        {
+                test: /\.(htm|html)$/i,
+                loader: 'html-withimg-loader'
+        },
         {
           test: /\.html$/,
           use: [

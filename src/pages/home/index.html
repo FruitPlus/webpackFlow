@@ -8,11 +8,10 @@
     <title>home</title>
   </head>
   <body>
-
-    ${require('../../components/header/header.html')}
+  #include("../../components/header/header.html")
     <div class = "collectJob">
       <h3 class = "title">
-        我收藏的职位
+        我收藏的职
       </h3>
       <ul class = "list">
         <li>
@@ -56,6 +55,36 @@
         </li>
       </ul>
     </div>
-    ${require('../../components/footer/footer.html')}
+    <div id="easyTab">
+      <ul class ="easyTab clearfix">
+        <li class ="active">盒1</li>
+        <li>盒2</li>
+        <li>盒3</li>
+      </ul>
+      <div class="tabBox">
+        <div class="active">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+      </div>
+    </div>
+    <div id="demo1" class="slideBox">
+
+      <ul class="items">
+
+        <li><a href="http://www.jq22.com/" title="这里是测试标题一"><img src="./img/1.jpg"></a></li>
+
+        <li><a href="http://www.jq22.com/" title="这里是测试标题二"><img src="./img/2.jpg"></a></li>
+        <li><a href="http://www.jq22.com/" title="这里是测试标题一"><img src="./img/3.jpg"></a></li>
+
+        <li><a href="http://www.jq22.com/" title="这里是测试标题二"><img src="./img/4.jpg"></a></li>
+        <li><a href="http://www.jq22.com/" title="这里是测试标题一"><img src="./img/5.jpg"></a></li>
+
+
+
+
+      </ul>
+
+
+    </div>
   </body>
 </html>
